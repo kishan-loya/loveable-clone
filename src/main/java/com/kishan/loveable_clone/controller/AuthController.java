@@ -6,28 +6,28 @@ import com.kishan.loveable_clone.dto.auth.SignupRequest;
 import com.kishan.loveable_clone.dto.auth.UserProfileResponse;
 import com.kishan.loveable_clone.service.AuthService;
 import com.kishan.loveable_clone.service.UserService;
+import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
+import lombok.experimental.FieldDefaults;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/auth")
 @RequiredArgsConstructor
+@FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
 public class AuthController {
 
-    private final AuthService authService;
-    private final UserService userService;
+    AuthService authService;
+    UserService userService;
 
     @PostMapping("/signup")
-    public ResponseEntity<AuthResponse> signupRequest(SignupRequest request) {
+    public ResponseEntity<AuthResponse> signupRequest(@RequestBody SignupRequest request) {
         return ResponseEntity.ok(authService.signup(request));
     }
 
     @PostMapping("/login")
-    public ResponseEntity<AuthResponse> loginRequest(LoginRequest request) {
+    public ResponseEntity<AuthResponse> loginRequest(@RequestBody LoginRequest request) {
         return ResponseEntity.ok(authService.login(request));
     }
 

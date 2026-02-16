@@ -19,7 +19,6 @@ public class FileController {
 
     private final FileService fileService;
 
-    
     @GetMapping
     public ResponseEntity<List<FileNode>> getFileTree(@PathVariable Long projectId) {
         Long userId = 1L; // This should be retrieved from the authenticated user's context
