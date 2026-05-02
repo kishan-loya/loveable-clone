@@ -1,5 +1,8 @@
 package com.kishan.loveable_clone.entity;
 
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.Setter;
@@ -10,6 +13,8 @@ import lombok.experimental.FieldDefaults;
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class Plan {
 
+//    @Id
+//    @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
 
     String name;
